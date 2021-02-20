@@ -5,9 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
-        if: github.event_name != 'pull_request'
         shell: bash
-        run: echo "::$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-      - name: Get branch name
-        run: echo 'The branch name is' $BRANCH_NAME
+        run: echo "${GITHUB_REF#refs/heads/}"
